@@ -51,11 +51,12 @@ def extract_text_from_rect(
         rect_words = [w for w in words if fitz.Rect(w[:4]).intersects(rect)]
         rect_words.sort(key=lambda w: (round(w[1], 1), w[0]))  # sort by y, then x
         
-        annot = page.add_rect_annot(rect)
-        annot.set_colors(stroke=(1, 0, 0))
-        annot.update()
-        doc.save("highlighted.pdf")
-        return " ".join(w[4] for w in rect_words)
+    # Note: avoid writing files in serverless environments. Previously this
+    # created an annotation and saved to disk (highlighted.pdf) for
+    # debugging; that can fail on Vercel (read-only filesystem) and cause
+    # runtime errors. We simply extract and return the text from the
+    # rectangle instead.
+    return " ".join(w[4] for w in rect_words)
 
 
 # HDFC details block coordinates

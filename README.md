@@ -151,7 +151,27 @@ print(rbl_data["name"], rbl_data["transactions"])
 
 ---
 
-## API Integration (Future Work)
+## API Integration https://pdf-parser-theta.vercel.app/
+
+### REST API Endpoints
+
+- `GET /health` verifies the service is up; returns `{ "status": "ok" }`.
+- `POST /parse/{issuer}` accepts a multipart form upload (`file` field) and dispatches to the matching parser. Supported issuers mirror the keys in `parsers/__init__.py` (`axis`, `hdfc`, `icici`, `idfc`, `rbl`).
+- When an unsupported issuer code is supplied, the API responds with HTTP 400 and an explanatory message.
+
+Example request using `curl` (replace `issuer` and PDF path as needed):
+
+```bash
+curl -X POST "http://localhost:8000/parse/axis" \
+    -F "file=@pdfs/axis-1.pdf" \
+    -H "accept: application/json"
+```
+
+Start the service locally with:
+
+```bash
+uvicorn app.main:app --reload
+```
 
 To expose these parsers via a REST API (e.g., FastAPI):
 
