@@ -1,0 +1,44 @@
+# Exclude local PDF assets and any large data files
+pdfs/
+*.pdf
+
+# Python caches and virtual envs
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Build and dist
+build/
+dist/
+*.egg-info/
+
+# Tests and local dev files
+tests/
+test.py
+code/test.py
+
+# OS / editor
+.DS_Store
+.vscode/
+*.log
+
+# Git
+.git/
+
+# Node / other
+node_modules/
+
+# Large binary/model directories (if any)
+spacy_data/
+models/
+
+# Vercel and caches
+.vercel/
+.vercel_build_output/
+
+pdfs/
