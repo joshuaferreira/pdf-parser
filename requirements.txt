@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+pdfplumber
+PyMuPDF
+spacy
+pandas

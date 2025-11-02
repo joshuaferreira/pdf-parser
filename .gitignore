@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local data / cache
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# Editors/IDE
+.vscode/
+.idea/
+
+# Generated artifacts
+*.log
+*.tmp
+highlighted.pdf
